@@ -1,0 +1,11 @@
+def pre_order(tree, root):
+    order_list = []
+    stack = [root]
+    while stack:
+        current_node = stack.pop()
+        while current_node is not None:
+            order_list.append(current_node.label)
+            if current_node.right_siblings is not None:
+                stack.append(current_node.right_siblings)
+            current_node = tree.pre_order(current_node.left_child)
+    return order_list
